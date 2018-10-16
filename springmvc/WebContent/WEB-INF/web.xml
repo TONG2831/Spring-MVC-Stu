@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>springmvc</display-name>
-  <welcome-file-list>
-  	<welcome-file>hello.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	<!-- 配置DispatcherServlet的初始化参数,配置springMVC配置文件的位置和名称 -->
-  	<init-param>
-  		<!-- 该参数名称必须是:"contextConfigLocation",否则在项目启动的时候报错 
-  			  实际上,可以使用默认的配置文件
-  			 默认：位置：/WEB—INF/ 
-  			 	 名称:<servlet-name>-servlet.xml
-  				即:/WEB-INF/<servlet-name>-servlet.xml
-  		-->
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>classpath:springmvc.xml</param-value>
-  	</init-param>
-  	<!-- Servlet的加载顺序:默认或小于0,第一请求时初始化;大于或等于0时,服务器启动时初始化,正值越小,优先级越高 -->
-  	<load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  <!-- 映射请求路径,当"/"时,映射所有的请求,不可以为空 -->
-  <servlet-mapping>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<url-pattern>/</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>springmvc</display-name>
+	<welcome-file-list>
+		<welcome-file>hello.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 可以解决中文乱码 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 配置DispatcherServlet的初始化参数,配置springMVC配置文件的位置和名称 -->
+		<init-param>
+			<!-- 该参数名称必须是:"contextConfigLocation",否则在项目启动的时候报错 实际上,可以使用默认的配置文件 默认：位置：/WEB—INF/ 
+				名称:<servlet-name>-servlet.xml 即:/WEB-INF/<servlet-name>-servlet.xml -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml</param-value>
+		</init-param>
+		<!-- Servlet的加载顺序:默认或小于0,第一请求时初始化;大于或等于0时,服务器启动时初始化,正值越小,优先级越高 -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- 映射请求路径,当"/"时,映射所有的请求,不可以为空 -->
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 </web-app>
