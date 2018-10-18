@@ -19,4 +19,13 @@
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+	<!--自定义的视图的视图解析器,使用视图的名称解析视图  -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="100"></property>
+	</bean>
+	
+	<!--该配置文件可以直接转发界面,无需再经过handler的方法 -->
+	<mvc:view-controller path="/success" view-name="success" />
+	<!-- 该注解,可以消除mvc:view-controller带来的其他页面无法响应的问题 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
 </beans>

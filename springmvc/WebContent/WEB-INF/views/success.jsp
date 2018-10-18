@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	modelAttribues:${user1.username}
 	<br>
 	<br>
 	request,student:${requestScope.stu}<br>

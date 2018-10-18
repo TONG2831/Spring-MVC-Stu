@@ -7,6 +7,16 @@
 </head>
 <body>
 <br>
+<!-- views -->
+<a href="views/test">Test Views</a>
+<br><br>
+	<!-- ModelAttributes -->
+	<form method="post" action="modelattribute/test">
+		userId:<input type="text" name="userId" /> <br> 
+		sname:<input type="text" name="username" /><br> 
+		<br> <input type="submit" value="测试ModelAttributes">
+	</form>
+	<br>
 	<br>
 	<!-- @SessionAttributes -->
 	<a href="sessionAttributes/test">Test SessionAttributes</a>
